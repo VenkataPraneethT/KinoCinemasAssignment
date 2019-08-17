@@ -1,0 +1,22 @@
+<div class="container">
+  <a href="/movie/list" class="back-button btn btn-primary">
+    << Back To Movies List</a>
+      <div class="row" *ngIf="movieDetail">
+        <div class="col-lg-9">
+          <h1 class="my-4">{{movieDetail.original_title}}</h1>
+          <div class="card mt-4 movie-detail">
+            <img *ngIf="!movieDetail.backdrop_path" src="assets/images/no_poster_available.jpg" alt="No poster available">
+            <img *ngIf="movieDetail.backdrop_path" class="cover-img" src="https://image.tmdb.org/t/p/original{{movieDetail.backdrop_path}}" alt="">
+            <p>Length: {{movieDetail.runtime}}</p>
+            <p class="description-text float-right">{{movieDetail.overview}}</p>
+            <div class="genres">
+              <div class="genre" *ngFor="let g of movieDetail.genres">{{g.name}} </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="list-group">
+          </div>
+        </div>
+      </div>
+</div>

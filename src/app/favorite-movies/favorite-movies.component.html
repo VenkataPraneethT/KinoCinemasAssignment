@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="text-center text-lg-left">Favorite Movies</h1>
+  <a href="/movie/list" class="back-button btn btn-primary">
+  << Back To Movies List</a>
+  <div class="row text-center text-lg-left">
+    <div class="movie-block col-md-2 col-sm-6 col-5" *ngFor="let movie of favoriteMovies ">
+      <a href="/movie/{{movie.id}}">
+        <img *ngIf="!movie.url" src="assets/images/no_poster_available.jpg" alt="No poster available">
+        <img *ngIf="movie.url" class="img-fluid img-thumbnail" src="https://image.tmdb.org/t/p/original{{movie.url}}" alt="">
+        <p class="movie-name">{{movie.title}}</p>
+      </a>
+    </div>
+  </div>
+</div>

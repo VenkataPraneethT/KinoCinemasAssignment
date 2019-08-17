@@ -1,0 +1,22 @@
+<div class="container">
+  <h1 class="text-center text-lg-left">Movies</h1>
+  <div class="movies-container row text-center text-lg-left">
+    <div class="input-group search-field col-md-6">
+      <input type="text" [(ngModel)]="searchText" class="form-control input-lg" placeholder="Type to search" (keyup.enter)="getMovies()"/>
+    </div>
+    <div class="col-md-6">
+      <a href="/movies/favorites">View favorites</a>
+    </div>
+  </div>
+  <div class="row text-center text-lg-left">
+    <div class="movie-block col-md-2 col-sm-6 col-5" *ngFor="let movie of movies ">
+      <span class="favorite-star-character" *ngIf="!favoriteClicked[movie.id]" (click) ="makeFavorite(movie.id, movie.original_title, movie.backdrop_path)">&#9825;</span>
+      <span class="favorite-star-character-filled" *ngIf="favoriteClicked[movie.id]" (click) ="makeFavorite(movie.id)">&hearts;</span>
+      <a href="/movie/{{movie.id}}">
+        <img *ngIf="!movie.backdrop_path" src="assets/images/no_poster_available.jpg" alt="No poster available">
+        <img *ngIf="movie.backdrop_path" class="img-fluid img-thumbnail" src="https://image.tmdb.org/t/p/original{{movie.backdrop_path}}" alt="">
+        <p class="movie-name">{{movie.original_title}}</p>
+      </a>
+    </div>
+  </div>
+</div>
