@@ -22,16 +22,16 @@ export class MovieService {
     return this.http.get<MovieCategoryModel>(`
         ${this.URL_SEARCH}?api_key=${this.API_KEY}&language=${lang}&query=${name}
       `)
-      // .pipe(
-      //   catchError(this.handleError<MovieCategoryModel>('getMovies'))
-      // );
+      .pipe(
+        catchError(this.handleError<MovieCategoryModel>('getMovies'))
+      );
   }
 
   getMovieById(movieID: number, lang: string): Observable<MovieDetailsModel> {
     return this.http.get<MovieDetailsModel>(`${this.URL_MOVIE}/${movieID}?api_key=${this.API_KEY}&language=${lang}`)
-    // .pipe(
-    //   catchError(this.handleError<MovieDetailsModel>(`getMovie id=${movieID}`))
-    // );
+    .pipe(
+      catchError(this.handleError<MovieDetailsModel>(`getMovie id=${movieID}`))
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
